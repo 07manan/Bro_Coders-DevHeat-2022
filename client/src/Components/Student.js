@@ -1,18 +1,27 @@
 import React from "react";
+import { useSearchParams } from "react-router-dom";
 import "./student.css";
 const Student = () => {
+  // eslint-disable-next-line
+  const [searchParams, setSearchParams] = useSearchParams();
+  const batch = searchParams.get("batch");
+  const roll = searchParams.get("rollno");
   return (
     <div>
       <section className="content-info">
         <div className="container paddings-mini">
           <div className="row">
             <div className="col-lg-12">
-              <h3 className="text-center">UI20EC44</h3>
+              <h3 className="text-center">Roll No.:{roll}</h3>
               <table className="table-hover ">
                 <thead className="point-table-head">
                   <tr>
-                    <th rowspan="5" className="text-center">Date</th>
-                    <th colspan="6" className="text-center">Subjects</th>
+                    <th rowspan="5" className="text-center">
+                      Date
+                    </th>
+                    <th colspan="6" className="text-center">
+                      Subjects
+                    </th>
                   </tr>
                 </thead>
                 <thead className="">
@@ -28,9 +37,7 @@ const Student = () => {
                 </thead>
                 <tbody className="text-center">
                   <tr>
-                    <td className="text-center date ">
-                      20-11-2022
-                    </td>
+                    <td className="text-center date ">20-11-2022</td>
                     <td>A</td>
                     <td>P</td>
                     <td>A</td>
@@ -39,9 +46,7 @@ const Student = () => {
                     <td>A</td>
                   </tr>
                   <tr>
-                    <td className="text-center date">
-                    21-11-2022
-                    </td>
+                    <td className="text-center date">21-11-2022</td>
                     <td>A</td>
                     <td>A</td>
                     <td>A</td>
@@ -50,9 +55,7 @@ const Student = () => {
                     <td>A</td>
                   </tr>
                   <tr>
-                    <td className="text-center date ">
-                    22-11-2022
-                    </td>
+                    <td className="text-center date ">22-11-2022</td>
                     <td>A</td>
                     <td>P</td>
                     <td>P</td>

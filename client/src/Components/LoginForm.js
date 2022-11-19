@@ -24,7 +24,7 @@ const LoginForm = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     const { username, password } = user;
-    let fetchUrl = "/api/login";
+    let fetchUrl = "http://localhost:8000/api/login";
     const res = await fetch(fetchUrl, {
       method: "POST",
       headers: {
@@ -36,7 +36,7 @@ const LoginForm = () => {
       }),
     });
     const json = await res.json();
-    // console.log(json.authToken);
+    console.log(json);
     if (json.success) {
       localStorage.setItem("token", json.authToken);
       toast.success("Login Successfull", {
@@ -66,6 +66,12 @@ const LoginForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(e.target.rollno.value, e.target.class.value);
+    navigate(
+      "/check-attendence?rollno=" +
+        e.target.rollno.value +
+        "&batch=" +
+        e.target.class.value
+    );
     //send roll no and class in url to student attendence page
     toast.error("Invalid Credentials", {
       position: "top-right",

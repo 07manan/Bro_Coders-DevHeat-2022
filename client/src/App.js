@@ -6,6 +6,7 @@ import LoginForm from "./Components/LoginForm";
 import RegisterForm from "./Components/RegisterForm";
 import Home from "./Components/Home";
 import ClassPage from "./Pages/ClassPage";
+import Student from "./Components/Student";
 function App() {
   return (
     <>
@@ -17,6 +18,7 @@ function App() {
         <Route path="/class" element={<ClassPage />} />
         <Route path="/login" element={<LoginForm />} />
         <Route path="/register" element={<RegisterForm />} />
+        <Route path="/check-attendence" element={<Student />} />
       </Routes>
     </>
   );
