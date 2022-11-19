@@ -225,4 +225,56 @@ router.patch("/add-attendance/:id", async (req, res) => {
     res.status(500).send("Internal Error Occured!");
   }
 });
+
+
+router.get("/student", async (req, res) => {
+  let batch=req.classname;
+  let roll=req.body.rollno;
+  //console.log(roll)
+  let attendance=[];
+  try {
+    let user = await Attendance.find({
+      classname: req.body.classname,
+    });
+    
+   for(const index in user){
+    let a=user[index];
+    let total=a.data.length;
+    let absent=0;
+    let subject=a.subject;
+    console.log(a.subject)
+    for (const i in a.data){
+      const searchObject= a.data[i].absent.find((num) => num==roll)
+      if(searchObject){
+        absent++;
+        console.log(absent);
+      } 
+    }
+    let percent=((total-absent)/total)*100;
+    console.log(percent)
+    let b={
+      subject,
+      total,
+      absent,
+      percent
+      
+    }
+    attendance.push(b);
+    console.log(b)
+    console.log("hare ram hare krishna")
+   }
+    console.log(attendance);
+    
+    if (!user) {
+      return res.json([]);
+    }
+    console.log("Successfuly fetched attendance");
+    res.status(200).json(attendance);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal Error Occured");
+  }
+});
+
+
 module.exports = router;
