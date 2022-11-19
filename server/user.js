@@ -1,6 +1,9 @@
+const mongoose = require("mongoose");
 const express = require("express");
 const router = express.Router();
-const User = require("./userSchema");
+const Teacher = require("./model/Teacher");
+const Attendance = require("./model/Attendance");
+const Class= require("./model/Classes")
 const { body, validationResult } = require("express-validator");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
@@ -22,17 +25,17 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
     try {
-      let userName = await User.findOne({
+      let userName = await Teacher.findOne({
         username: req.body.username,
       });
-      let user = await User.findOne({ email: req.body.email });
+      let user = await Teacher.findOne({ email: req.body.email });
       if (user || userName) {
         return res.status(400).json({ error: "Sorry User Already Exist" });
       }
       /* const salt = await bcrypt.genSalt(10);
       const hashPass = await bcrypt.hash(req.body.password, salt); */
       //create
-      user = await User.create({
+      user = await Teacher.create({
         username: req.body.username,
         email: req.body.email,
         password: req.body.password,
@@ -71,7 +74,7 @@ router.post(
     }
     const { username, password } = req.body;
     try {
-      let user = await User.findOne({ username });
+      let user = await teacher.findOne({ username });
       if (!user) {
         
         return res
@@ -100,4 +103,98 @@ router.post(
   }
 );
 
+router.get("/classes/:id",async (req,res)=>{
+  const userid= req.params.id;
+  try {
+    let clas = await Class.find({teacher:userid});
+      if (!clas) {
+        return res
+          .status(400)
+          .json({ error: "No classes created" });
+      }
+
+      res.json({clas});
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal Error Occured");
+  }
+});
+
+router.post("/addclasses/:id",async (req,res)=>{
+  // console.log("Cmae");
+  const userid= req.params.id;
+  // console.log(userid);
+  try {
+    let user = await Class.findOne({classname:req.body.classname});
+    if (user) {
+      return res.status(400).json({ error: "You have already created this class" });
+    }
+    let cla = await Class.create({
+      teacher: userid,
+      subject: req.body.subject,
+      classname:req.body.classname
+    });
+    console.log("Successfuly added class");
+    res.status(200).send("Successfuly added class");
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal Error Occured");
+  }
+});
+
+router.get("/attendance/:id",async (req,res)=>{
+  // console.log("Cmae");
+  const userid= req.params.id;
+  // console.log(userid);
+  try {
+    let user = await Attendance.findOne({teacher:userid,subject:req.body.subject,classname:req.body.classname});
+    if (!user) {
+      return res.json([]);
+    }
+    console.log("Successfuly fetched attendance");
+    res.status(200).json(user.data);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal Error Occured");
+  }
+});
+
+router.patch("/add-attendance/:id",async (req,res)=>{
+  // console.log("Cmae");
+  const userid= req.params.id;
+  // console.log(userid);
+  try{
+    let f= await Attendance.findOne({teacher:userid,subject:req.body.subject,classname:req.body.classname});
+    if(!f){
+    let nuser= await Attendance.create({
+      teacher: userid,
+      subject:req.body.subject,
+      classname :req.body.classname,
+      data: []
+    })
+  }
+ }catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal Error Occured");
+  }
+  try{
+    let user2= await Attendance.find({"data":{date:req.body.data.date}});
+    if(user2){
+      await Attendance.findOneAndUpdate({teacher:userid,subject:req.body.subject,classname:req.body.classname},
+        {$pull: {"data": {date:req.body.data.date}}});
+    }
+      // Attendance.updateOne({teacher:userid,subject:req.body.subject,classname:req.body.classname},{ $pop: { data: 1 } })
+    
+    let user = await Attendance.findOneAndUpdate({teacher:userid,subject:req.body.subject,classname:req.body.classname},
+      {$push: {data: req.body.data}});
+    if (!user) {
+      return res.status(400).json({ error: "Failed" });
+    }
+    console.log("Successfuly added attendance");
+    res.status(200).send("Successfuly added attendance");
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal Error Occured");
+  }
+});
 module.exports = router;
