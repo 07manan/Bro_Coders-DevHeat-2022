@@ -10,7 +10,7 @@ const LoginForm = () => {
     password: "",
   });
   let name, value;
-  let history = useNavigate();
+  let navigate = useNavigate();
   const handleInputs = (e) => {
     console.log(e);
     name = e.target.name;
@@ -38,7 +38,7 @@ const LoginForm = () => {
   if (json.success) {
     localStorage.setItem("token", json.authToken);
     window.alert("Login Successfull");
-    history("/home");
+    navigate("/home");
   }
   else {
     alert("Invalid credentials");

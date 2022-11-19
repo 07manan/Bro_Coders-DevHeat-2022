@@ -9,7 +9,7 @@ const RegisterForm = () => {
     password: "",
   });
   let name, value;
-  let history = useNavigate();
+  let navigate = useNavigate();
   const handleInputs = (e) => {
     console.log(e);
     name = e.target.name;
@@ -38,7 +38,7 @@ const RegisterForm = () => {
     if (json.success) {
       localStorage.setItem("token", json.authToken);
       window.alert("Created Successfull");
-      history("/login");
+      navigate("/login");
     } else {
       alert("Invalid credentials");
     }
