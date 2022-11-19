@@ -1,7 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import "../forms/login.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "../Components/register.css";
 
 const LoginForm = () => {
@@ -13,7 +14,7 @@ const LoginForm = () => {
   let name, value;
   let navigate = useNavigate();
   const handleInputs = (e) => {
-    console.log(e);
+    // console.log(e);
     name = e.target.name;
     value = e.target.value;
 
@@ -38,13 +39,45 @@ const LoginForm = () => {
     // console.log(json.authToken);
     if (json.success) {
       localStorage.setItem("token", json.authToken);
-      window.alert("Login Successfull");
+      toast.success("Login Successfull", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
       navigate("/home");
     } else {
-      alert("Invalid credentials");
+      toast.error("Invalid Credentials", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     }
   };
-  const handleSubmit = async (e) => {};
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log(e.target.rollno.value, e.target.class.value);
+    //send roll no and class in url to student attendence page
+    toast.error("Invalid Credentials", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  };
   return (
     <div className="registration-form">
       {userType == "teacher" ? (
@@ -118,7 +151,7 @@ const LoginForm = () => {
           </div>
         </form>
       ) : (
-        <form>
+        <form onSubmit={handleSubmit}>
           <button
             position="left"
             style={{ marginLeft: "-50px" }}
@@ -150,10 +183,10 @@ const LoginForm = () => {
               type="text"
               className="form-control item"
               onChange={handleInputs}
-              id="username"
-              name="username"
+              id="rollno"
+              name="rollno"
               value-={user.username}
-              placeholder="Username"
+              placeholder="Roll No."
             />
           </div>
 
@@ -171,13 +204,11 @@ const LoginForm = () => {
           </select>
 
           <div className="form-group">
-            <button
-              type="button"
+            <input
+              type="submit"
               className="btn btn-block create-account"
-              onClick={handleSubmit}
-            >
-              Submit
-            </button>
+              value="Submit"
+            />
           </div>
         </form>
       )}
@@ -195,6 +226,20 @@ const LoginForm = () => {
           </a>
         </div>
       </div>
+      {/* <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      /> */}
+      {/* Same as */}
+      <ToastContainer />
     </div>
   );
 };
