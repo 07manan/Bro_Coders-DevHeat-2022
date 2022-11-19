@@ -1,24 +1,16 @@
-import "./App.css";
-import LoginForm from "./forms/LoginForm";
-import { BrowserRouter , Router, Routes, Route, Link } from "react-router-dom";
-import RegisterForm from "./forms/RegisterForm";
-import Home from "./Home";
+import { Route, Routes } from "react-router-dom";
+import AddClasses from "./Pages/AddClasses";
+
+import Classes from "./Pages/Classes";
 
 function App() {
   return (
-    <BrowserRouter>
-    <Routes>
-      <Route exact path="/" element={<Home />} />
-
-    </Routes>
-    <Routes>
-      <Route exact path="/login" element={<LoginForm />} />
-    </Routes>
-    <Routes>
-      <Route exact path="/register" element={<RegisterForm />} />
-    </Routes>
-    </BrowserRouter>
-    
+    <>
+      <Routes>
+        <Route path="/classes" element={<Classes />} />
+        <Route path="/add-classes" element={<AddClasses />} />
+      </Routes>
+    </>
   );
 }
 
