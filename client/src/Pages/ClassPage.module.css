@@ -1,0 +1,50 @@
+.ClassPage {
+    padding: 2rem 3rem;
+}
+
+.heading {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+.table {
+    width: fit-content;
+    min-width: 60vw;
+    max-width: 95vw;
+    border: 1px solid black;
+    border-radius: 100px !important;
+}
+
+.tablehead {
+    background-color: rgb(0, 128, 255);
+    font-weight: bold;
+    color: white;
+    font-size: 1.5rem;
+    border-radius: 100px !important;
+    border-bottom: 1px solid black;
+    text-align: center;
+    padding: 0.5rem 1rem;
+}
+
+.tablehead th {
+    border-right: 1px solid black;
+}
+
+.cell {
+    padding: 0.5rem 1rem;
+    text-align: center;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+}
+
+.tableFooter {
+    padding: 0.5rem 1rem;
+    background-color: rgb(0, 128, 255);
+    text-align: right;
+    color: white;
+}
+
+.tftd {
+    padding: 0.5rem 1rem;
+    text-align: right;
+}

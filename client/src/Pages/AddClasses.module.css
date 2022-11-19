@@ -1,0 +1,79 @@
+.AddClasses {
+    margin: 5vh 3vw;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    padding: 5vh 5vw;
+    background-color: white;
+    border-radius: 20px;
+    margin-bottom: 3.5rem;
+}
+
+.form>* {
+    margin: 1vh 0;
+}
+
+.form select,
+.form select option,
+.form input {
+    border-radius: 20px;
+    border: 2px solid #5791ff;
+    padding: 10px 20px;
+}
+
+.form input[type=submit] {
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    background-color: #5791ff;
+}
+
+.form input[type=submit]:hover {
+    background-color: white;
+    color: #5791ff;
+}
+
+.table {
+    width: fit-content;
+    min-width: 60vw;
+    max-width: 95vw;
+    border: 1px solid black;
+    border-radius: 100px !important;
+}
+
+.tablehead {
+    background-color: rgb(0, 128, 255);
+    font-weight: bold;
+    color: white;
+    font-size: 1.5rem;
+    border-radius: 100px !important;
+    border-bottom: 1px solid black;
+    text-align: center;
+    padding: 0.5rem 1rem;
+}
+
+.tablehead th {
+    border-right: 1px solid black;
+}
+
+.cell {
+    padding: 0.5rem 1rem;
+    text-align: center;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+}
+
+.tableFooter {
+    padding: 0.5rem 1rem;
+    background-color: rgb(0, 128, 255);
+    text-align: right;
+    color: white;
+}
+
+.tftd {
+    padding: 0.5rem 1rem;
+    text-align: right;
+}

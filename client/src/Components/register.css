@@ -1,24 +1,24 @@
-body{
+body {
     background-color: #dee9ff;
 }
 
-.registration-form{
-	padding: 50px 0;
+.registration-form {
+    padding: 50px 0 0 0;
 }
 
-.registration-form form{
-    background-color: #fff;
+.registration-form form {
+    background-color: rgb(255, 255, 255);
     max-width: 600px;
     margin: auto;
-    padding: 70px 50px;
+    padding: 20px 50px;
     padding-bottom: 30px;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
 }
 
-.registration-form .form-icon{
-	text-align: center;
+.registration-form .form-icon {
+    text-align: center;
     background-color: #5891ff;
     border-radius: 50%;
     font-size: 40px;
@@ -30,13 +30,13 @@ body{
     line-height: 100px;
 }
 
-.registration-form .item{
-	border-radius: 20px;
+.registration-form .item {
+    border-radius: 20px;
     margin-bottom: 25px;
     padding: 10px 20px;
 }
 
-.registration-form .create-account{
+.registration-form .create-account {
     border-radius: 30px;
     padding: 10px 20px;
     font-size: 18px;
@@ -47,7 +47,7 @@ body{
     margin-top: 20px;
 }
 
-.registration-form .social-media{
+.registration-form .social-media {
     max-width: 600px;
     background-color: #fff;
     margin: auto;
@@ -60,12 +60,12 @@ body{
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
 }
 
-.registration-form .social-icons{
+.registration-form .social-icons {
     /* margin-top: 30px; */
     margin-bottom: 16px;
 }
 
-.registration-form .social-icons a{
+.registration-form .social-icons a {
     font-size: 23px;
     margin: 0 3px;
     color: #5691ff;
@@ -79,23 +79,49 @@ body{
     line-height: 45px;
 }
 
-.registration-form .social-icons a:hover{
+.registration-form .social-icons a:hover {
     text-decoration: none;
     /* opacity: 0.6; */
     color: white;
     background-color: #5791ff;
 }
 
+.tab-button {
+    width: 60%;
+    max-width: 300px;
+    padding: 1.5rem 0;
+    transform: translateY(-20px);
+    margin-bottom: 2rem;
+    cursor: pointer;
+    border: 0px solid black;
+}
+
+.tab-button[position=left] {
+    border-top-left-radius: 30px;
+}
+
+.tab-button[position=right] {
+    border-top-right-radius: 30px;
+}
+
+.tab-button:focus,
+.tab-button:active,
+.tab-button:focus-visible {
+    border: 0px solid black;
+    outline: none;
+}
+
 @media (max-width: 576px) {
-    .registration-form{
+    .registration-form {
         margin: 20px 20px;
     }
-    .registration-form form{
-        
+
+    .registration-form form {
+
         padding: 50px 20px;
     }
 
-    .registration-form .form-icon{
+    .registration-form .form-icon {
         width: 70px;
         height: 70px;
         font-size: 30px;
