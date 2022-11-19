@@ -16,6 +16,25 @@
     margin: 1vh 0;
 }
 
+.form select,
+.form select option,
+.form input {
+    border-radius: 20px;
+    border: 2px solid #5791ff;
+    padding: 10px 20px;
+}
+
+.form input[type=submit] {
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    background-color: #5791ff;
+}
+
+.form input[type=submit]:hover {
+    background-color: white;
+    color: #5791ff;
+}
 
 .table {
     width: fit-content;
