@@ -269,7 +269,7 @@ router.get("/student", async (req, res) => {
       return res.json([]);
     }
     console.log("Successfuly fetched attendance");
-    res.status(200).json(user.data);
+    res.status(200).json(attendance);
   } catch (error) {
     console.error(error.message);
     res.status(500).send("Internal Error Occured");
