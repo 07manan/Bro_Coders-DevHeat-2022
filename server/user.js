@@ -4,6 +4,7 @@ const router = express.Router();
 const Teacher = require("./model/Teacher");
 const Attendance = require("./model/Attendance");
 const Class= require("./model/Classes")
+const  Students= require("./model/Students")
 const { body, validationResult } = require("express-validator");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
@@ -74,7 +75,8 @@ router.post(
     }
     const { username, password } = req.body;
     try {
-      let user = await teacher.findOne({ username });
+      let user = await Teacher.findOne({ username });
+      console.log(user._id);
       if (!user) {
         
         return res
@@ -94,8 +96,11 @@ router.post(
       };
       const authToken = jwt.sign(data, JWT_SECRET);
       console.log("Login Successful");
+      
       success = true;
-      res.json({ success,authToken });
+      let id=user._id;
+      console.log(id);
+      res.json({ success,id,authToken});
     } catch (error) {
       console.error(error.message);
       res.status(500).send("Internal Error Occured");
@@ -134,6 +139,16 @@ router.post("/addclasses/:id",async (req,res)=>{
       subject: req.body.subject,
       classname:req.body.classname
     });
+    
+      let stu=await Students.create({
+      classname: req.body.classname,
+      data:req.body.data
+
+      })
+
+
+    console.log(stu);
+    console.log("turu turu")
     console.log("Successfuly added class");
     res.status(200).send("Successfuly added class");
   } catch (error) {
@@ -194,7 +209,7 @@ router.patch("/add-attendance/:id",async (req,res)=>{
     res.status(200).send("Successfuly added attendance");
   } catch (error) {
     console.error(error.message);
-    res.status(500).send("Internal Error Occured");
+    res.status(500).send("Internal Error Occured!");
   }
 });
 module.exports = router;
