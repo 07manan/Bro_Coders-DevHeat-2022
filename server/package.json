@@ -10,6 +10,7 @@
     "nodemon": "^2.0.20"
   },
   "name": "brocoders",
+  "proxy":"http://localhost:8000",
   "version": "1.0.0",
   "main": "index.js",
   "devDependencies": {},

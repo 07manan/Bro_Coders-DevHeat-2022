@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 // import "../forms/login.css";
 import "../Components/register.css";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
@@ -9,6 +10,7 @@ const LoginForm = () => {
     password: "",
   });
   let name, value;
+  let history = useNavigate();
   const handleInputs = (e) => {
     console.log(e);
     name = e.target.name;
@@ -16,8 +18,31 @@ const LoginForm = () => {
 
     setUser({ ...user, [name]: value });
   };
-  const handleLogin=async(e)=>{
 
+  const handleLogin=async(e)=>{
+    e.preventDefault();
+    const { username, password } = user;
+  let fetchUrl="/api/login";
+  const res = await fetch(fetchUrl, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      username,
+      password,
+    }),
+  });
+  const json = await res.json();
+  // console.log(json.authToken);
+  if (json.success) {
+    localStorage.setItem("token", json.authToken);
+    window.alert("Login Successfull");
+    history("/home");
+  }
+  else {
+    alert("Invalid credentials");
+  }
   }
   return (
     <div className="registration-form">
