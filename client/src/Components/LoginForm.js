@@ -1,8 +1,7 @@
 import React from "react";
 import { useState } from "react";
-// import "../forms/login.css";
 import "../Components/register.css";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+
 const LoginForm = () => {
   const [user, setUser] = useState({
     username: "",
@@ -16,9 +15,7 @@ const LoginForm = () => {
 
     setUser({ ...user, [name]: value });
   };
-  const handleLogin=async(e)=>{
-
-  }
+  const handleLogin = async (e) => {};
   return (
     <div className="registration-form">
       <form>
@@ -52,16 +49,19 @@ const LoginForm = () => {
         </div>
 
         <div className="form-group">
-          <button type="button" className="btn btn-block create-account"onClick={handleLogin}>
+          <button
+            type="button"
+            className="btn btn-block create-account"
+            onClick={handleLogin}
+          >
             Login
           </button>
         </div>
         <div>
-           <span className="center">
-          Don't have an account? <a href="/register">Create Account</a>
-        </span>
+          <span className="center">
+            Don't have an account? <a href="/register">Create Account</a>
+          </span>
         </div>
-       
       </form>
       <div className="social-media">
         {/* <h5>Sign up with social media</h5> */}
