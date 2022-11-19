@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../forms/register.css";
+import "../Components/register.css";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 const RegisterForm = () => {
   const [user, setUser] = useState({

@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 // import "../forms/login.css";
-import "../forms/register.css";
+import "../Components/register.css";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 const LoginForm = () => {
   const [user, setUser] = useState({
