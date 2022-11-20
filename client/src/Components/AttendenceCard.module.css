@@ -1,0 +1,54 @@
+.card {
+    background-color: rgb(255, 255, 255);
+    padding: 1rem 2rem;
+    margin: 2.5vh 2.5vw;
+    max-width: 20rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 0 0.5rem 0.1rem rgb(0, 0, 0, 0.1);
+}
+
+.cardItem {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem 0;
+    max-width: 20rem;
+}
+
+.cardHead {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 20rem;
+    border-top-left-radius: 1.5rem;
+    border-top-right-radius: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding: 1rem 2rem;
+    padding-bottom: 0;
+    margin: -1rem -2rem;
+    margin-bottom: 1rem;
+    color: rgb(0, 0, 0);
+    background-color: rgb(97, 97, 255);
+}
+
+.percent {
+    margin-bottom: 0;
+}
+
+.percentBar {
+    height: 0.5rem;
+    width: 100%;
+    border-radius: 0.5rem;
+    background-color: rgb(0, 0, 0, 0.1);
+
+}
+
+.percentBarFill {
+    height: 0.5rem;
+    width: 100%;
+    border-radius: 0.5rem;
+    background-color: rgb(97, 97, 255);
+}
