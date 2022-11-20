@@ -273,4 +273,38 @@ router.get("/student/:classname/:rollno", async (req, res) => {
   }
 });
 
+router.get("/student/name/:classname/:rollno", async (req, res) => {
+  let roll = req.params.rollno;
+  console.log(roll);
+  console.log(req.params.classname)
+  try {
+    console.log("hello moto");
+    let user = await Students.find({
+      classname: req.params.classname,
+    });
+   // console.log(user[0].data);
+    function isCherries(bacha) {
+      return bacha.rollno == roll;
+    }
+    //console.log(user[0].data.find(isCherries));
+    let student=user[0].data.find(isCherries);
+    if(!student){
+      return res.status(401).send("Plese enter valid Roll No. !!")
+    }
+      console.log("hare ram hare krishna");
+    
+    let name=student.name;
+    console.log(name);
+
+    if (!user) {
+      return res.json([]);
+    }
+    console.log("Successfuly fetched name");
+    res.status(200).json(name);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal Error Occured");
+  }
+});
+
 module.exports = router;

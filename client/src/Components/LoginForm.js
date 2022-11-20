@@ -204,7 +204,7 @@ const LoginForm = () => {
             id="class"
           >
             <option value={null}>Select Batch</option>
-            <option value="ECE 5th sem">ECE 5th sem</option>
+            <option value="ECE 5SEM">ECE 5SEM</option>
             <option value="ECE 3rd sem">ECE 3rd sem</option>
             <option value="CSE 3rd sem">CSE 3rd sem</option>
             <option value="CSE 5th sem">CSE 5th sem</option>
