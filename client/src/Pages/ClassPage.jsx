@@ -78,7 +78,7 @@ function ClassPage() {
               <button
                 style={{ cursor: "pointer" }}
                 onClick={() => {
-                  navigate("/pathDaalDena");
+                  navigate("/add-attendence");
                 }}
               >
                 Add Attendence

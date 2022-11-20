@@ -54,6 +54,14 @@ function AddClasses() {
   const handleUpload = (e) => {
     e.preventDefault();
     //post req to add class
+    axios.post(
+      `http://localhost:8000/api/addclasses/${localStorage.getItem("id")}`,
+      {
+        classname: batch,
+        subject: "DSA",
+        data: excelData,
+      }
+    );
     navigate(`/class?batch=${batch}`);
   };
 

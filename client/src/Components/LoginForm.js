@@ -36,9 +36,10 @@ const LoginForm = () => {
       }),
     });
     const json = await res.json();
-    console.log(json);
+    // console.log(json);
     if (json.success) {
       localStorage.setItem("token", json.authToken);
+      localStorage.setItem("id", json.id);
       toast.success("Login Successfull", {
         position: "top-right",
         autoClose: 3000,
@@ -49,7 +50,7 @@ const LoginForm = () => {
         progress: undefined,
         theme: "light",
       });
-      navigate("/home");
+      navigate("/classes");
     } else {
       toast.error("Invalid Credentials", {
         position: "top-right",

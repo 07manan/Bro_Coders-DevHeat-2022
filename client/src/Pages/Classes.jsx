@@ -9,14 +9,15 @@ function Classes() {
   const navigate = useNavigate();
   // eslint-disable-next-line
   const [classes, setClasses] = React.useState([]);
+  let uid = localStorage.getItem("id");
   useEffect(() => {
-    axios.get("http://localhost:8000/api/classes").then((res) => {
-      setClasses(res.data);
+    axios.get(`http://localhost:8000/api/classes/${uid}`).then((res) => {
+      setClasses(res.clas);
     });
   }, []);
   return (
     <div className={styles.classes}>
-      {classes.map((item, index) => {
+      {classes?.map((item, index) => {
         return <Class key={index} name={item} />;
       })}
       <div className={styles.addclasses}>

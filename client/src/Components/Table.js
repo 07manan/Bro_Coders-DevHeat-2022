@@ -41,8 +41,8 @@ const Table = () => {
             </tr>
           </thead>
           <tbody>
-            {data.map((d) => (
-              <tr>
+            {data.map((d, key) => (
+              <tr key={key}>
                 <td className="text-center">{d.roll}</td>
                 <td> {d.name}</td>
                 <td>{d.status}</td>
