@@ -9,19 +9,19 @@ const Student = () => {
   // eslint-disable-next-line
   const [searchParams, setSearchParams] = useSearchParams();
   const [attendence, setAttendence] = React.useState([]);
-  const [name, setName] = React.useState("Manan");
+  const [name, setName] = React.useState("me");
   const batch = searchParams.get("batch");
   const roll = searchParams.get("rollno");
 
   useEffect(() => {
-    // axios
-    //   .get(`http://localhost:8000/api/student/name/${batch}/${roll}`)
-    //   .then((res) => {
-    //     setName(res.data);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
+    axios
+      .get(`http://localhost:8000/api/student/name/${batch}/${roll}`)
+      .then((res) => {
+        setName(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     axios
       .get(`http://localhost:8000/api/student/${batch}/${roll}`)
       .then((res) => {
@@ -40,12 +40,7 @@ const Student = () => {
       {attendence?.map((item, key) => {
         return <AttendenceCard key={key} attendence={item} />;
       })}
-      {attendence?.map((item, key) => {
-        return <AttendenceCard key={key} attendence={item} />;
-      })}
-      {attendence?.map((item, key) => {
-        return <AttendenceCard key={key} attendence={item} />;
-      })}
+      
     </div>
   );
 };
