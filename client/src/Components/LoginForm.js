@@ -14,7 +14,6 @@ const LoginForm = () => {
   let name, value;
   let navigate = useNavigate();
   const handleInputs = (e) => {
-    // console.log(e);
     name = e.target.name;
     value = e.target.value;
 
@@ -36,7 +35,6 @@ const LoginForm = () => {
       }),
     });
     const json = await res.json();
-    // console.log(json);
     if (json.success) {
       localStorage.setItem("token", json.authToken);
       localStorage.setItem("id", json.id);
@@ -66,7 +64,6 @@ const LoginForm = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(e.target.rollno.value, e.target.class.value);
     navigate(
       "/check-attendence?rollno=" +
         e.target.rollno.value +

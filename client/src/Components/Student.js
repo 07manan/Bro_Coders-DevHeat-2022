@@ -40,7 +40,6 @@ const Student = () => {
       {attendence?.map((item, key) => {
         return <AttendenceCard key={key} attendence={item} />;
       })}
-      
     </div>
   );
 };

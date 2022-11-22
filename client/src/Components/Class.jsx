@@ -9,10 +9,10 @@ function Class(props) {
     <div
       className={styles.class}
       onClick={() => {
-        navigate(`/class?batch=${props.name}`);
+        navigate(`/class?batch=${props.subject}`);
       }}
     >
-      {props.name}
+      {props.subject}
       <RiArrowRightSLine />
     </div>
   );

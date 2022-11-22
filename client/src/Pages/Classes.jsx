@@ -12,13 +12,14 @@ function Classes() {
   let uid = localStorage.getItem("id");
   useEffect(() => {
     axios.get(`http://localhost:8000/api/classes/${uid}`).then((res) => {
-      setClasses(res.clas);
+      setClasses(res.data.clas);
+      console.log(res);
     });
   }, []);
   return (
     <div className={styles.classes}>
-      {classes?.map((item, index) => {
-        return <Class key={index} name={item} />;
+      {classes?.map((item, i) => {
+        return <Class key={i} subject={item.subject} />;
       })}
       <div className={styles.addclasses}>
         <AiFillPlusCircle

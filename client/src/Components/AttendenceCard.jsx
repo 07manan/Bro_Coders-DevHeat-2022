@@ -10,7 +10,6 @@ function AttendenceCard(props) {
   return (
     <div className={style.card}>
       <div className={style.cardHead}>
-        <p>Subject:</p>
         <p>{props.attendence.subject}</p>
       </div>
       <div className={style.cardItem + " " + style.total}>

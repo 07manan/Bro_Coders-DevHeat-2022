@@ -8,6 +8,8 @@ function ClassPage() {
   // eslint-disable-next-line
   const [searchParams, setSearchParams] = useSearchParams();
   const batch = searchParams.get("batch");
+  //use batch to fetch data of absent students
+
   const lecdates = ["01/11/22", "02/11/22", "03/11/22", "04/11/22", "05/11/22"];
   const data = [
     {
