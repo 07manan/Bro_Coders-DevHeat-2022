@@ -80,7 +80,7 @@ function ClassPage() {
               <button
                 style={{ cursor: "pointer" }}
                 onClick={() => {
-                  navigate("/add-attendence");
+                  navigate(`/add-attendence?batch=${batch}`);
                 }}
               >
                 Add Attendence

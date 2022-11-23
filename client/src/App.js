@@ -7,7 +7,8 @@ import RegisterForm from "./Components/RegisterForm";
 import Home from "./Components/Home";
 import ClassPage from "./Pages/ClassPage";
 import Student from "./Components/Student";
-import Table from "./Components/Table";
+import AddAttendence from "./Components/AddAttendence";
+
 function App() {
   return (
     <>
@@ -16,7 +17,7 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/classes" element={<Classes />} />
         <Route path="/add-classes" element={<AddClasses />} />
-        <Route path="/add-attendence" element={<Table />} />
+        <Route path="/add-attendence" element={<AddAttendence />} />
         <Route path="/class" element={<ClassPage />} />
         <Route path="/login" element={<LoginForm />} />
         <Route path="/register" element={<RegisterForm />} />

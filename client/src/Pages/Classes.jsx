@@ -13,7 +13,6 @@ function Classes() {
   useEffect(() => {
     axios.get(`http://localhost:8000/api/classes/${uid}`).then((res) => {
       setClasses(res.data.clas);
-      console.log(res);
     });
   }, []);
   return (
